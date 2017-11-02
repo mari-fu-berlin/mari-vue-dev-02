@@ -17,23 +17,29 @@ export default {
     'mari-navigation': mariNavigation,
   },
   data() {
+    const config = {
+      navigationDrawerWidth: {
+        default: 500,
+        colexp: 720,
+        navbar: 500,
+      },
+    };
     return {
       toolbar: false,
-      pWidth: 500,
       layoutState: {
         navColExp: false,
-        navigationDrawerWidth: 500,
-        mainPaddingLeft: 'padding-left: 500px',
+        navigationDrawerWidth: config.navigationDrawerWidth.default,
+        mainPaddingLeft: 'padding-left: ' + config.navigationDrawerWidth.default + 'px',
       },
       layoutSchemeNavColExp: {
         navColExp: true,
-        navigationDrawerWidth: 720,
-        mainPaddingLeft: 'padding-left: 720px',
+        navigationDrawerWidth: config.navigationDrawerWidth.colexp,
+        mainPaddingLeft: 'padding-left: ' + config.navigationDrawerWidth.colexp + 'px',
       },
       layoutSchemeNavBar: {
         navColExp: false,
-        navigationDrawerWidth: 500,
-        mainPaddingLeft: 'padding-left: 500px',
+        navigationDrawerWidth: config.navigationDrawerWidth.navbar,
+        mainPaddingLeft: 'padding-left: ' + config.navigationDrawerWidth.navbar + 'px',
       },
     };
   },
