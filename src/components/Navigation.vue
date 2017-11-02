@@ -37,9 +37,6 @@ export default {
   props: {
     navColExp: Boolean,
   },
-    // mounted() {
-  //   console.log(this.$vuetify.load);
-  // },
   data() {
     return {
       // logoSrc: '../assets/mari-logo.png',
