@@ -23,7 +23,7 @@ export default {
       layoutState: {
         navColExp: false,
         navigationDrawerWidth: 500,
-        mainPaddingLeft: 'padding-left: 500px',
+        mainPaddingLeft: 'padding-left: ' + 500 + 'px',
       },
       layoutSchemeNavColExp: {
         navColExp: true,
