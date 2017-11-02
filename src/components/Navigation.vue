@@ -18,10 +18,7 @@
         <v-flex v-else xs1 id="mari-navigation-bar">
           <v-icon dark @click="mariToggleNavCol()" style="cursor: pointer">menu</v-icon>
         </v-flex>
-        <v-flex v-if="navColExp" xs8 id="mari-content-listing">
-          <content-listing></content-listing>
-        </v-flex>
-        <v-flex v-else xs11 id="mari-content-listing">
+        <v-flex v-bind:class="navColExp ? 'xs8' : 'xs11'" id="mari-content-listing">
           <content-listing></content-listing>
         </v-flex>
       </v-layout>

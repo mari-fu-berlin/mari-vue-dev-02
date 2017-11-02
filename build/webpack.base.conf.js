@@ -36,9 +36,9 @@ module.exports = {
         options: {
           formatter: require('eslint-friendly-formatter'),
           rules: {
-           'prefer-template': "off"
-         }
-       },
+            'prefer-template': "off"
+          }
+        }
       },
       {
         test: /\.vue$/,
