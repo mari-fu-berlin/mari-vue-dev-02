@@ -61,7 +61,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #app {
 
 }
@@ -70,5 +70,9 @@ export default {
 }
 #mari-navigation {
   background-color: #6c07ff;;
-  overflow: hidden;}
+  overflow: hidden;
+}
+.container.grid-list-xs {
+  padding: 0;
+}
 </style>
