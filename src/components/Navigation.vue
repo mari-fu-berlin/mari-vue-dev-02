@@ -6,14 +6,14 @@
           <div class="mari-logo">
             <img src="../assets/mari-logo.png" :alt="logoAlt" />
           </div><!-- .mari-logo -->
-          <v-list dense class id="mari-nav">
-            <v-list-tile v-for="navRoute in navRoutes" :key="navRoute.title" @click="mariGoTo(navRoute.path)">
-              <v-list-tile-content>
-                <v-list-tile-title><span class="list-tile-title">{{navRoute.label}}</span></v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+          <div id="mari-navi">
+            <ul class="mari-navi">
+              <router-link tag="li" :to="{ name: 'Home', params: {} }"><a>Startseite</a></router-link>
+              <router-link tag="li" :to="{ name: 'Content-01', params: {} }"><a>Inhaltsseite</a></router-link>
+              <router-link tag="li" :to="{ name: 'Raeume', params: {} }"><a>Räume</a></router-link>
+            </ul>
             <v-icon dark @click="mariToggleNavCol()" style="cursor: pointer">chevron_left</v-icon>
-          </v-list>
+          </div><!--- #mari-navi -->
         </v-flex>
         <v-flex v-else xs1 id="mari-navigation-bar">
           <v-icon dark @click="mariToggleNavCol()" style="cursor: pointer">menu</v-icon>
@@ -39,7 +39,6 @@ export default {
   },
   data() {
     return {
-      // logoSrc: '../assets/mari-logo.png',
       logoAlt: 'Logo der Mosse Art Research Initiative',
       target: '',
       navRoutes: [
@@ -52,6 +51,11 @@ export default {
           path: '/startseite',
           name: 'Home',
           label: 'Startseite',
+        },
+        {
+          path: '/plans',
+          name: 'Plans',
+          label: 'Räume',
         },
         {
           path: '/inhaltsseite-1',
@@ -102,10 +106,23 @@ export default {
   max-width: 12rem;
   margin-left: 16px;
 }
-.list-tile-title {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 1.25rem;
-  letter-spacing: .1rem;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#mari-navi {
+  margin-top: 4rem;
+}
+#mari-navi a,
+#mari-navi a:link,
+#mari-navi a:visited,
+#mari-navi a:hover,
+#mari-navi a:focus {
+color: #fff;
+text-transform: uppercase;
+text-decoration: none;
+font-size: 1.25rem;
+letter-spacing: .1rem;
 }
 </style>

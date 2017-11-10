@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
 import Home from '@/components/Home';
 import Content01 from '@/components/Content-01';
 import Subpage1 from '@/components/Subpage-1';
+import Raeume from '@/components/Raeume';
 
 Vue.use(Router);
 
@@ -11,12 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: HelloWorld,
-    },
-    {
-      path: '/startseite',
-      name: 'Home',
+      name: 'Startseite',
       component: Home,
     },
     {
@@ -28,6 +23,11 @@ export default new Router({
       path: '/inhaltsseite-1/unterseite-1',
       name: 'Subpage-01',
       component: Subpage1,
+    },
+    {
+      path: '/plans',
+      name: 'Raeume',
+      component: Raeume,
     },
   ],
 });
