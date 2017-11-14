@@ -5,36 +5,16 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    roomForDisplay: { name: 'Beispielraum' },
-    planDim: {
-      w: 1000,
-      h: 1253,
-    },
-    rooms: [
-      {
-        name: 'Ecksaal',
-        w: 278,
-        h: 195,
-        x: 714,
-        y: 1015,
-      },
-      {
-        name: 'Treppensaal',
-        w: 132,
-        h: 137,
-        x: 853,
-        y: 869,
-      },
-    ],
+    roomForDisplay: { },
   },
   getters: {
     displayRoom(state) {
-      return state.roomForDisplay.name;
+      return state.roomForDisplay;
     },
   },
   mutations: {
     changeRoomForDisplay(state, payload) {
-      store.state.roomForDisplay.name = payload;
+      store.state.roomForDisplay = payload;
     },
   },
   actions: {

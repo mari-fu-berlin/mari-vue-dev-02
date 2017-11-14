@@ -6,12 +6,20 @@
             <h2>Raumplan</h2>
             <div id="plans-container" ref="plansContainer">
               <img :src="planSrc" ref="plan"/>
-              <a href="#" v-for=" (room, index) in rooms" @click.prevent="getRoom(room)" v-bind:id="room.name" class="room-trigger" v-bind:style="positionRoom(index)"></a>
+              <a
+                href="#" v-for=" (room, index) in rooms"
+                @click.prevent="getRoom(room)"
+                v-bind:id="room.name"
+                class="room-trigger"
+                v-bind:style="positionRoom(index)">
+            </a>
             </div>
           </v-flex>
           <v-flex xs4>
-            <h3>Raumdetails</h3>
-            <div>aktueller Raum {{ displayRoom }}</div>
+            <div>
+              <h4>{{ displayRoom.name }}</h4>
+              <p>{{ displayRoom.sigle }}</p>
+            </div>
           </v-flex>
       </v-layout>
     </v-container>
@@ -20,54 +28,33 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import Rooms from '../mixins/roomsData';
 
 export default {
+  mixins: [Rooms],
   name: 'Plans',
   data() {
     return {
       devOutput: '',
-      planSrc: '../static/Plan-1.svg',
-      planDim: {
-        w: 1000,
-        h: 1253,
-      },
-      rooms: [
-        {
-          name: 'Ecksaal',
-          w: 278,
-          h: 195,
-          x: 714,
-          y: 1015,
-        },
-        {
-          name: 'Treppensaal',
-          w: 132,
-          h: 137,
-          x: 853,
-          y: 869,
-        },
-      ],
     };
   },
   methods: {
     positionRoom(i) {
       const room = this.rooms[i];
-      const scaleFactor = 1.0;
-      room.wRel = (room.w / this.planDim.w) * 100 * scaleFactor;
-      room.hRel = (room.h / this.planDim.h) * 100 * scaleFactor;
-      room.xRel = (room.x / this.planDim.w) * 100 * scaleFactor;
-      room.yRel = (room.y / this.planDim.h) * 100 * scaleFactor;
+      room.wRel = (room.w / this.planDim.w) * 100;
+      room.hRel = (room.h / this.planDim.h) * 100;
+      room.xRel = (room.x / this.planDim.w) * 100;
+      room.yRel = (room.y / this.planDim.h) * 100;
       let styleText = '';
       styleText += ' width: ' + room.wRel + '%;';
       styleText += ' height: ' + room.hRel + '%; ';
       styleText += ' left: ' + room.xRel + '%;';
       styleText += ' top: ' + room.yRel + '%;';
-      styleText += 'background: red';
       return styleText;
     },
     getRoom(n) {
       // this.$store.state.roomForDisplay.name = n.name;
-      const r = n.name;
+      const r = n;
       this.$store.dispatch('changeRoomForDisplay', r);
     },
   },
@@ -94,6 +81,6 @@ export default {
   .room-trigger {
     display: block;
     position: absolute;
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.0);
   }
 </style>
