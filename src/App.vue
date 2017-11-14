@@ -1,45 +1,37 @@
 <template>
   <v-app>
-    <v-toolbar app v-if="toolbar"> <v-btn color="primary" dark>Primary</v-btn></v-toolbar>
-    <v-navigation-drawer id="mari-navigation" app permanent :width="layoutState.navigationDrawerWidth">
-      <mari-navigation :navColExp="layoutState.navColExp" @layoutStateChanged='changeLayoutState($event)'></mari-navigation>
+    <v-toolbar app v-if="getToolbarStat"> <v-btn color="primary" dark>Primary</v-btn></v-toolbar>
+    <v-navigation-drawer id="mari-navigation" app permanent :width="getLayoutScheme.navDrawerWidth">
+      <mari-navigation></mari-navigation>
     </v-navigation-drawer>
-    <router-view id="mari-router-view" :style="layoutState.mainPaddingLeft"></router-view>
+    <router-view id="mari-router-view" :style="getLayoutScheme.mainPaddingLeft"></router-view>
   </v-app>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import mariNavigation from '@/components/Navigation';
-import Layout from './mixins/Layout';
 
 export default {
   name: 'app',
-  mixins: [Layout],
   components: {
     'mari-navigation': mariNavigation,
   },
   computed: {
-
+   // mix the getters into computed with object spread operator
+    ...mapGetters([
+      'getLayoutScheme',
+      'getToolbarStat',
+     // ...
+    ]),
   },
-  methods: {
-    getPadding() {
-
-    },
-    changeLayoutState(layoutStateProp) {
-      if (layoutStateProp === false) {
-        this.layoutState = this.layoutSchemeNavColExp;
-      } else {
-        this.layoutState = this.layoutSchemeNavBar;
-      }
-    },
+  created() {
+    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme01);
   },
 };
 </script>
 
 <style>
-#app {
-
-}
 #mari-router-view {
   max-width: 1280px;
 }

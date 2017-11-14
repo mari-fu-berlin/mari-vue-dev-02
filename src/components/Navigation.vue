@@ -2,13 +2,13 @@
   <div>
     <v-container fluid grid-list-xs>
       <v-layout row wrap>
-        <v-flex xs4 id="mari-navigation-col" v-if="navColExp">
+        <v-flex xs4 id="mari-navigation-col" v-if="getNavColState">
           <div class="mari-logo">
             <img src="../assets/mari-logo.png" :alt="logoAlt" />
           </div><!-- .mari-logo -->
           <div id="mari-navi">
             <ul class="mari-navi">
-              <router-link tag="li" :to="{ name: 'Home', params: {} }"><a>Startseite</a></router-link>
+              <router-link tag="li" :to="{ name: 'Startseite', params: {} }"><a>Startseite</a></router-link>
               <router-link tag="li" :to="{ name: 'Content-01', params: {} }"><a>Inhaltsseite</a></router-link>
               <router-link tag="li" :to="{ name: 'Raeume', params: {} }"><a>Räume</a></router-link>
             </ul>
@@ -18,7 +18,7 @@
         <v-flex v-else xs1 id="mari-navigation-bar">
           <v-icon dark @click="mariToggleNavCol()" style="cursor: pointer">menu</v-icon>
         </v-flex>
-        <v-flex v-bind:class="navColExp ? 'xs8' : 'xs11'" id="mari-content-listing">
+        <v-flex v-bind:class="getNavColState ? 'xs8' : 'xs11'" id="mari-content-listing">
           <content-listing></content-listing>
         </v-flex>
       </v-layout>
@@ -28,14 +28,12 @@
 
 <script>
 import contentListing from '@/components/Content-Listing';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'navi',
   components: {
     'content-listing': contentListing,
-  },
-  props: {
-    navColExp: Boolean,
   },
   data() {
     return {
@@ -72,12 +70,17 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters([
+      'getNavColState',
+    ]),
+  },
   methods: {
     mariGoTo(target) {
       this.$router.push(target);
     },
     mariToggleNavCol() {
-      this.$emit('layoutStateChanged', this.navColExp);
+      this.$store.dispatch('changeNavState');
     },
   },
   created() {
@@ -87,9 +90,6 @@ export default {
 </script>
 
 <style scoped>
-#app {
-
-}
 #mari-navigation-col {
   background-color: transparent;
   padding-left: 1.5rem;

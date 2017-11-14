@@ -65,6 +65,9 @@ export default {
      // ...
     ]),
   },
+  created() {
+    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00);
+  },
 };
 </script>
 
