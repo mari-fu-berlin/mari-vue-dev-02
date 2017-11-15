@@ -19,6 +19,7 @@
             <div>
               <h4>{{ displayRoom.name }}</h4>
               <p>{{ displayRoom.sigle }}</p>
+              <p>Log: {{ devOutput }} </p>
             </div>
           </v-flex>
       </v-layout>
@@ -35,7 +36,7 @@ export default {
   name: 'Plans',
   data() {
     return {
-      devOutput: '',
+      devOutput: 'leer',
     };
   },
   methods: {
@@ -67,6 +68,7 @@ export default {
   },
   created() {
     this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00);
+    this.devOutput = 'created';
   },
 };
 </script>

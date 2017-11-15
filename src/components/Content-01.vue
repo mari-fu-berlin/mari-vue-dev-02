@@ -24,6 +24,9 @@ export default {
       pageTitle: '1. Inhaltsseite',
     };
   },
+  created() {
+    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00);
+  },
 };
 </script>
 

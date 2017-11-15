@@ -11,6 +11,7 @@
               <router-link tag="li" :to="{ name: 'Startseite', params: {} }"><a>Startseite</a></router-link>
               <router-link tag="li" :to="{ name: 'Content-01', params: {} }"><a>Inhaltsseite</a></router-link>
               <router-link tag="li" :to="{ name: 'Raeume', params: {} }"><a>Räume</a></router-link>
+              <router-link tag="li" :to="{ name: 'Page', params: {} }"><a>Seite</a></router-link>
             </ul>
             <v-icon dark @click="mariToggleNavCol()" style="cursor: pointer">chevron_left</v-icon>
           </div><!--- #mari-navi -->

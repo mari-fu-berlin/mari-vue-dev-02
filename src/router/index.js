@@ -4,6 +4,7 @@ import Home from '@/components/Home';
 import Content01 from '@/components/Content-01';
 import Subpage1 from '@/components/Subpage-1';
 import Raeume from '@/components/Raeume';
+import Page from '@/components/Page';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/plans',
       name: 'Raeume',
       component: Raeume,
+    },
+    {
+      path: '/page',
+      name: 'Page',
+      component: Page,
     },
   ],
 });
