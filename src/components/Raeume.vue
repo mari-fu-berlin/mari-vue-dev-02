@@ -7,7 +7,7 @@
             <div id="plans-container" ref="plansContainer">
               <img :src="planSrc" ref="plan"/>
               <a
-                href="#" v-for=" (room, index) in rooms"
+                href="#" v-for=" (room, index) in getRoomsWP"
                 @click.prevent="getRoom(room, index)"
                 v-bind:id="room.name"
                 class="room-trigger"
@@ -17,7 +17,7 @@
           </v-flex>
           <v-flex xs4>
             <div>
-              <h4>{{ displayRoom.name }}</h4>
+              <h4>{{ displayRoom.raum_name }}</h4>
               <p>{{ displayRoom.sigle }}</p>
               <p>Log: {{ devOutput }} </p>
               <p>Aktueller Raum: {{ getRoomWP.raum_name }}</p>
@@ -45,16 +45,17 @@ export default {
   },
   methods: {
     positionRoom(i) {
-      const room = this.rooms[i];
-      room.wRel = (room.w / this.planDim.w) * 100;
-      room.hRel = (room.h / this.planDim.h) * 100;
-      room.xRel = (room.x / this.planDim.w) * 100;
-      room.yRel = (room.y / this.planDim.h) * 100;
+      const room = this.getRoomsWP[i];
+      const referenzPlan = this.getRoomsWP[i].referenzplan[0];
+      const w = (room.breite / referenzPlan.plan_messbreite) * 100;
+      const h = (room.hoehe / referenzPlan.plan_messhoehe) * 100;
+      const x = (room.position_x / referenzPlan.plan_messbreite) * 100;
+      const y = (room.position_y / referenzPlan.plan_messhoehe) * 100;
       let styleText = '';
-      styleText += ' width: ' + room.wRel + '%;';
-      styleText += ' height: ' + room.hRel + '%; ';
-      styleText += ' left: ' + room.xRel + '%;';
-      styleText += ' top: ' + room.yRel + '%;';
+      styleText += ' width: ' + w + '%;';
+      styleText += ' height: ' + h + '%; ';
+      styleText += ' left: ' + x + '%;';
+      styleText += ' top: ' + y + '%;';
       return styleText;
     },
     getRoom(n, index) {
@@ -93,6 +94,6 @@ export default {
   .room-trigger {
     display: block;
     position: absolute;
-    background: rgba(0,0,0,.2);
+    background: rgba(255,0,0,.2);
   }
 </style>
