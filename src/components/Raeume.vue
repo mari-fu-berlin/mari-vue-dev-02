@@ -8,7 +8,7 @@
               <img :src="planSrc" ref="plan"/>
               <a
                 href="#" v-for=" (room, index) in rooms"
-                @click.prevent="getRoom(room)"
+                @click.prevent="getRoom(room, index)"
                 v-bind:id="room.name"
                 class="room-trigger"
                 v-bind:style="positionRoom(index)">
@@ -20,6 +20,10 @@
               <h4>{{ displayRoom.name }}</h4>
               <p>{{ displayRoom.sigle }}</p>
               <p>Log: {{ devOutput }} </p>
+              <p>Aktueller Raum: {{ getRoomWP.raum_name }}</p>
+              <pre>{{ getRoomWP }}</pre>
+              <hr />
+              <pre>{{ getRoomsWP }}</pre>
             </div>
           </v-flex>
       </v-layout>
@@ -53,21 +57,24 @@ export default {
       styleText += ' top: ' + room.yRel + '%;';
       return styleText;
     },
-    getRoom(n) {
-      // this.$store.state.roomForDisplay.name = n.name;
-      const r = n;
-      this.$store.dispatch('changeRoomForDisplay', r);
+    getRoom(n, index) {
+      // this.$store.state.roomForDisplay.name = n.name
+      const payload = { n, index };
+      this.$store.dispatch('changeRoomForDisplay', payload);
     },
   },
   computed: {
    // mix the getters into computed with object spread operator
     ...mapGetters([
       'displayRoom',
+      'getRoomsWP',
+      'getRoomWP',
      // ...
     ]),
   },
   created() {
     this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00);
+    this.$store.dispatch('loadRoomsWP');
     this.devOutput = 'created';
   },
 };
@@ -86,6 +93,6 @@ export default {
   .room-trigger {
     display: block;
     position: absolute;
-    background: rgba(0,0,0,.0);
+    background: rgba(0,0,0,.2);
   }
 </style>
