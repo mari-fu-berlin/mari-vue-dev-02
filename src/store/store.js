@@ -6,8 +6,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    roomsWP: [],
-    roomWP: {},
+    rooms: [],
+    room: {},
     roomForDisplay: { },
     layoutScheme: {
       navColExp: false,
@@ -30,11 +30,11 @@ const store = new Vuex.Store({
     toolbar: false,
   },
   getters: {
-    getRoomsWP(state) {
-      return state.roomsWP;
+    getRooms(state) {
+      return state.rooms;
     },
     getRoomWP(state) {
-      return state.roomWP;
+      return state.room;
     },
     displayRoom(state) {
       return state.roomForDisplay;
@@ -51,11 +51,11 @@ const store = new Vuex.Store({
   },
   mutations: {
     setRoomsWP(state, payload) {
-      store.state.roomsWP = payload;
+      store.state.rooms = payload;
     },
     changeRoomForDisplay(state, payload) {
       store.state.roomForDisplay = payload.n;
-      store.state.roomWP = state.roomsWP[payload.index];
+      store.state.room = state.rooms[payload.index];
     },
     toggleNavCol(state) {
       store.state.navColExp = !state.navColExp;

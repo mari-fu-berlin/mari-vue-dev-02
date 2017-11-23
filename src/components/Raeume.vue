@@ -7,7 +7,7 @@
             <div id="plans-container" ref="plansContainer">
               <img :src="planSrc" ref="plan"/>
               <a
-                href="#" v-for=" (room, index) in getRoomsWP"
+                href="#" v-for=" (room, index) in getRooms"
                 @click.prevent="getRoom(room, index)"
                 v-bind:id="room.name"
                 class="room-trigger"
@@ -23,7 +23,7 @@
               <p>Aktueller Raum: {{ getRoomWP.raum_name }}</p>
               <pre>{{ getRoomWP }}</pre>
               <hr />
-              <pre>{{ getRoomsWP }}</pre>
+              <pre>{{ getRooms }}</pre>
             </div>
           </v-flex>
       </v-layout>
@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     positionRoom(i) {
-      const room = this.getRoomsWP[i];
-      const referenzPlan = this.getRoomsWP[i].referenzplan[0];
+      const room = this.getRooms[i];
+      const referenzPlan = this.getRooms[i].referenzplan[0];
       const w = (room.breite / referenzPlan.plan_messbreite) * 100;
       const h = (room.hoehe / referenzPlan.plan_messhoehe) * 100;
       const x = (room.position_x / referenzPlan.plan_messbreite) * 100;
@@ -68,7 +68,7 @@ export default {
    // mix the getters into computed with object spread operator
     ...mapGetters([
       'displayRoom',
-      'getRoomsWP',
+      'getRooms',
       'getRoomWP',
      // ...
     ]),
