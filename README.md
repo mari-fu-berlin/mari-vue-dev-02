@@ -1,6 +1,6 @@
-# vuetify_sandbox
+# mari-vue-dev-02
 
-> A Vue.js project
+> Frontend for Mari Project
 
 ## Build Setup
 

@@ -9,25 +9,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import mariNavigation from '@/components/Navigation';
+import { mapGetters } from 'vuex'
+import mariNavigation from '@/components/Navigation'
 
 export default {
   name: 'app',
   components: {
-    'mari-navigation': mariNavigation,
+    'mari-navigation': mariNavigation
   },
   computed: {
     ...mapGetters([
       'getLayoutScheme',
-      'getToolbarStat',
+      'getToolbarStat'
      // ...
-    ]),
+    ])
   },
-  created() {
-    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme01);
-  },
-};
+  created () {
+    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme01)
+  }
+}
 </script>
 
 <style>
@@ -40,5 +40,8 @@ export default {
 }
 .container.grid-list-xs {
   padding: 0;
+}
+.page-content {
+  position: absolute;
 }
 </style>

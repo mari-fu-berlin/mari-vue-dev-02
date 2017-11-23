@@ -8,12 +8,12 @@
 <script>
 export default {
   name: 'Subpage-01',
-  data() {
+  data () {
     return {
-      pageTitle: '1. Unterseite',
-    };
-  },
-};
+      pageTitle: '1. Unterseite'
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

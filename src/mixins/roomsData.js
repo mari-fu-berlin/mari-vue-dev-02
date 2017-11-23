@@ -1,9 +1,9 @@
 export const roomsData = {
-  data() {
+  data () {
     return {
-      planSrc: '../static/Plan-1.svg',
-    };
-  },
-};
+      planSrc: '../static/Plan-1.svg'
+    }
+  }
+}
 
-export default roomsData;
+export default roomsData

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-grey">
+  <div class="bg-grey page-content">
     <v-container grid-list-md>
       <v-layout row wrap>
           <v-flex xs12>
@@ -12,22 +12,22 @@
 </template>
 
 <script>
-import ContentListing from '@/components/Content-Listing';
+import ContentListing from '@/components/Content-Listing'
 
 export default {
   name: 'Content-01',
   components: {
-    'content-listing': ContentListing,
+    'content-listing': ContentListing
   },
-  data() {
+  data () {
     return {
-      pageTitle: '1. Inhaltsseite',
-    };
+      pageTitle: '1. Inhaltsseite'
+    }
   },
-  created() {
-    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00);
-  },
-};
+  created () {
+    this.$store.dispatch('setLayoutScheme', this.$store.state.layoutScheme00)
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

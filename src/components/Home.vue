@@ -8,12 +8,12 @@
 <script>
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
-      pageTitle: 'Startseite',
-    };
-  },
-};
+      pageTitle: 'Startseite'
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

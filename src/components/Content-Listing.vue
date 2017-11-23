@@ -28,16 +28,14 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'Content-01',
-  data() {
+  data () {
     return {
-      pageTitle: '1. Inhaltsseite',
-    };
-  },
-};
+      pageTitle: '1. Inhaltsseite'
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

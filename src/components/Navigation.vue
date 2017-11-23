@@ -28,15 +28,15 @@
 </template>
 
 <script>
-import contentListing from '@/components/Content-Listing';
-import { mapGetters } from 'vuex';
+import contentListing from '@/components/Content-Listing'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'navi',
   components: {
-    'content-listing': contentListing,
+    'content-listing': contentListing
   },
-  data() {
+  data () {
     return {
       logoAlt: 'Logo der Mosse Art Research Initiative',
       target: '',
@@ -44,17 +44,17 @@ export default {
         {
           path: '/',
           name: 'Index',
-          label: 'Domain',
+          label: 'Domain'
         },
         {
           path: '/startseite',
           name: 'Home',
-          label: 'Startseite',
+          label: 'Startseite'
         },
         {
           path: '/plans',
           name: 'Plans',
-          label: 'Räume',
+          label: 'Räume'
         },
         {
           path: '/inhaltsseite-1',
@@ -64,30 +64,28 @@ export default {
             {
               path: '/inhaltsseite-1/unterseite-1',
               name: 'Subpage-01',
-              label: 'Unterseite 1',
-            },
-          ],
-        },
-      ],
-    };
+              label: 'Unterseite 1'
+            }
+          ]
+        }
+      ]
+    }
   },
   computed: {
     ...mapGetters([
-      'getNavColState',
-    ]),
+      'getNavColState'
+    ])
   },
   methods: {
-    mariGoTo(target) {
-      this.$router.push(target);
+    mariGoTo (target) {
+      this.$router.push(target)
     },
-    mariToggleNavCol() {
-      this.$store.dispatch('changeNavState');
-    },
+    mariToggleNavCol () {
+      this.$store.dispatch('changeNavState')
+    }
   },
-  created() {
-
-  },
-};
+  created () { }
+}
 </script>
 
 <style scoped>

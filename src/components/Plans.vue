@@ -63,18 +63,18 @@ export default {
 </script>
 
 <style scoped>
-  #plans-container {
-    position: relative;
-    margin: 20px;
-    max-width: 600px;
-  }
-  #plans-container img {
-    max-width: 100%;
-    display: block;
-  }
-  .room-trigger {
-    display: block;
-    position: absolute;
-    background: rgba(0,0,0,.2);
-  }
+#plans-container {
+  position: relative;
+  margin: 20px;
+  max-width: 600px;
+}
+#plans-container img {
+  max-width: 100%;
+  display: block;
+}
+.room-trigger {
+  display: block;
+  position: absolute;
+  background: rgba(0,0,0,.2);
+}
 </style>
