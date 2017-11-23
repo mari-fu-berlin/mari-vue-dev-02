@@ -38,21 +38,21 @@ const store = new Vuex.Store({
     getToolbarStat: state => state.layoutScheme.toolbar
   },
   mutations: {
-    setRoomsWP: (state, payload) => {
+    setRoomsWP (state, payload) {
       state.rooms = payload
     },
-    changeRoomForDisplay: (state, payload) => {
+    changeRoomForDisplay (state, payload) {
       state.roomForDisplay = payload.n
       state.room = state.rooms[payload.index]
     },
-    toggleNavCol: (state) => {
+    toggleNavCol (state) {
       state.navColExp = !state.navColExp
     },
-    changeNavState: (state) => {
+    changeNavState (state) {
       state.layoutScheme = (state.layoutScheme === state.layoutScheme01)
         ? state.layoutScheme00 : state.layoutScheme01
     },
-    setLayoutScheme: (state, payload) => {
+    setLayoutScheme (state, payload) {
       state.layoutScheme = payload
     }
   },
